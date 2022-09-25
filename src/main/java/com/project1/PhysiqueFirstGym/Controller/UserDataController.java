@@ -1,10 +1,11 @@
 package com.project1.PhysiqueFirstGym.Controller;
 
 import com.project1.PhysiqueFirstGym.entity.UserData;
-import com.project1.PhysiqueFirstGym.service.UserDataService;
+import com.project1.PhysiqueFirstGym.service.user.UserDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -14,7 +15,7 @@ public class UserDataController {
     private UserDataService userService;
 
     @PostMapping("/saveUser")
-    public String saveUserData(@RequestBody UserData uData){
+    public String saveUserData(@Valid @RequestBody UserData uData){
         userService.saveUserData(uData);
         return "Saved User Data Successfully";
     }
@@ -24,7 +25,7 @@ public class UserDataController {
         return userService.getUserData();
     }
 
-    @GetMapping("/getUserData/{id}")
+    @GetMapping("/getUserData/id/{id}")
     public UserData getUserDataById(@PathVariable("id") Long userId){
         return userService.getUserDataById(userId);
     }
@@ -38,5 +39,10 @@ public class UserDataController {
     @PutMapping("/updateUserData/{id}")
     public UserData updateUserDataById(@PathVariable("id") Long userId, @RequestBody UserData uData){
         return userService.updateUserDataById(userId,uData);
+    }
+
+    @GetMapping("getUserData/name/{name}")
+    public UserData getUserDataByName(@PathVariable("name") String name){
+        return userService.getUserDataByName(name);
     }
 }

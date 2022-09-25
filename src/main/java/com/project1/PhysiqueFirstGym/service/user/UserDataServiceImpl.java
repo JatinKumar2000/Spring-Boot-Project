@@ -1,16 +1,16 @@
-package com.project1.PhysiqueFirstGym.service;
+package com.project1.PhysiqueFirstGym.service.user;
 
 import com.project1.PhysiqueFirstGym.entity.UserData;
 import com.project1.PhysiqueFirstGym.repository.UserDataRepository;
+import com.project1.PhysiqueFirstGym.service.user.UserDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 import java.util.Objects;
 
 @Service
-public class UserDataServiceImpl implements UserDataService{
+public class UserDataServiceImpl implements UserDataService {
 
     @Autowired
     private UserDataRepository userRepo;
@@ -51,6 +51,11 @@ public class UserDataServiceImpl implements UserDataService{
         }
 
         return userRepo.save(Udata);
+    }
+
+    @Override
+    public UserData getUserDataByName(String name) {
+        return userRepo.findByNameIgnoreCase(name);
     }
 
 

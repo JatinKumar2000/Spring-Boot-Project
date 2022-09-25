@@ -1,4 +1,4 @@
-package com.project1.PhysiqueFirstGym.service;
+package com.project1.PhysiqueFirstGym.service.user;
 
 import com.project1.PhysiqueFirstGym.entity.UserData;
 
@@ -16,4 +16,7 @@ public interface UserDataService{
    public void deleteUserDataById(Long userId);
 
    public UserData updateUserDataById(Long userId, UserData uData);
+
+
+   public UserData getUserDataByName(String name);
 }
