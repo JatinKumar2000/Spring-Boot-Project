@@ -1,0 +1,19 @@
+package com.project1.PhysiqueFirstGym.service;
+
+import com.project1.PhysiqueFirstGym.entity.UserData;
+
+import java.util.List;
+
+public interface UserDataService{
+
+   public UserData saveUserData(UserData uData);
+
+
+   public List<UserData> getUserData();
+
+   public UserData getUserDataById(Long userId);
+
+   public void deleteUserDataById(Long userId);
+
+   public UserData updateUserDataById(Long userId, UserData uData);
+}
