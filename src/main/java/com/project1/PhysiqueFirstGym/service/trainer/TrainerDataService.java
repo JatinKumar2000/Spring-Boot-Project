@@ -7,5 +7,7 @@ import java.util.List;
 public interface TrainerDataService{
     public List<TrainerData> getTrainerData();
 
-   public TrainerData saveTrainerData(TrainerData tdata);
+    public void deleteTrainerDataById(Long tid);
+
+    public TrainerData saveTrainerData(TrainerData tdata);
 }

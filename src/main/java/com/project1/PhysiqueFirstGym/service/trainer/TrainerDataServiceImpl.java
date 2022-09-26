@@ -17,6 +17,11 @@ public class TrainerDataServiceImpl implements TrainerDataService {
     }
 
     @Override
+    public void deleteTrainerDataById(Long tid) {
+        trainerRepo.deleteById(tid);
+    }
+
+    @Override
     public TrainerData saveTrainerData(TrainerData tdata) {
         return trainerRepo.save(tdata);
     }

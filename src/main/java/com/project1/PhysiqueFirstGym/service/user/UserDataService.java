@@ -8,7 +8,6 @@ public interface UserDataService{
 
    public UserData saveUserData(UserData uData);
 
-
    public List<UserData> getUserData();
 
    public UserData getUserDataById(Long userId);

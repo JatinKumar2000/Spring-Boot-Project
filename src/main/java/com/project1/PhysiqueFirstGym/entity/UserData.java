@@ -1,15 +1,13 @@
 package com.project1.PhysiqueFirstGym.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
 public class UserData {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "MY_ENTITY_SEQ_2", sequenceName = "MY_ENTITY_SEQ_2", allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "MY_ENTITY_SEQ_2" )
     private Long userId;
     @NotBlank(message = "Please enter your name")
     private String name;

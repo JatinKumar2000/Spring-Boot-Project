@@ -10,38 +10,37 @@ import java.util.List;
 
 @RestController
 public class UserDataController {
-
     @Autowired
     private UserDataService userService;
 
-    @PostMapping("/saveUser")
+    @PostMapping("/user/saveUser")
     public String saveUserData(@Valid @RequestBody UserData uData){
         userService.saveUserData(uData);
         return "Saved User Data Successfully";
     }
 
-    @GetMapping("/getUserData")
+    @GetMapping("/user/getUserData")
     public List<UserData> getUserData(){
         return userService.getUserData();
     }
 
-    @GetMapping("/getUserData/id/{id}")
+    @GetMapping("/user/getUserData/id/{id}")
     public UserData getUserDataById(@PathVariable("id") Long userId){
         return userService.getUserDataById(userId);
     }
 
-    @DeleteMapping("/deleteUserData/{id}")
+    @DeleteMapping("/user/deleteUserData/{id}")
     public String deleteUserDataById(@PathVariable("id") Long userId){
         userService.deleteUserDataById(userId);
         return "User Deleted Successfully";
     }
 
-    @PutMapping("/updateUserData/{id}")
+    @PutMapping("/user/updateUserData/{id}")
     public UserData updateUserDataById(@PathVariable("id") Long userId, @RequestBody UserData uData){
         return userService.updateUserDataById(userId,uData);
     }
 
-    @GetMapping("getUserData/name/{name}")
+    @GetMapping("user/getUserData/name/{name}")
     public UserData getUserDataByName(@PathVariable("name") String name){
         return userService.getUserDataByName(name);
     }
