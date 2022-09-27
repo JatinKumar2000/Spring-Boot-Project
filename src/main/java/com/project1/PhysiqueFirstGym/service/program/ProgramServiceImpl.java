@@ -20,11 +20,6 @@ public class ProgramServiceImpl implements ProgramService{
     }
 
     @Override
-    public program saveProgram(program pdata) {
-        return programRepo.save(pdata);
-    }
-
-    @Override
     public void deleteProgram(Long pid) {
         programRepo.deleteById(pid);
     }

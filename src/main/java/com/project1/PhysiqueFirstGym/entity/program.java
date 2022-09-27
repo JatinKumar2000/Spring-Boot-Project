@@ -19,5 +19,7 @@ public class program {
     private String pname;
     private String description;
 
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ppid_fk")
+    private ProgramPrice programPrice;
 }

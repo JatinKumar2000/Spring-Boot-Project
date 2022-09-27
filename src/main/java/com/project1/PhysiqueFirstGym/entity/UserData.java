@@ -14,7 +14,6 @@ public class UserData {
     private Long age;
     private String gender;
     private Long contact;
-
     public UserData() {
     }
 

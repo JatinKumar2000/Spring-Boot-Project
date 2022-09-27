@@ -23,9 +23,10 @@ public class ProgramsController {
         return programService.getPrograms();
     }
 
-    @PostMapping("programs/save")
-    public program saveProgram(@RequestBody program pdata){
-        return programService.saveProgram(pdata);
+    @PostMapping("/programs/programPrice/save")
+    public String saveProgramPrice(@RequestBody ProgramPrice programPrice){
+        programPriceService.saveProgramPrice(programPrice);
+        return "Saved Program Price Successfully";
     }
 
     @DeleteMapping("programs/delete/{id}")
@@ -34,8 +35,9 @@ public class ProgramsController {
         return "Delete Program Successfully";
     }
 
-    @PostMapping("/programs/price/save")
-    public ProgramPrice saveProgramPrice(@RequestBody ProgramPrice programPrice){
-        return programPriceService.saveProgramPrice(programPrice);
-    }
+
+
+
+
+
 }
