@@ -13,13 +13,18 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class program {
     @Id
-    @SequenceGenerator(name = "program_sequence",sequenceName = "program_sequence",allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO,generator = "program_sequence")
+    @GeneratedValue
+    @Column(name = "ProgramId")
     private Long pid;
+    @Column(name = "Program_name")
     private String pname;
+    @Column(name = "Description")
     private String description;
 
+    //create price id FK , user_id FK
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ppid_fk")
+    @JoinColumn(name="Program_priceId")
     private ProgramPrice programPrice;
+
+
 }

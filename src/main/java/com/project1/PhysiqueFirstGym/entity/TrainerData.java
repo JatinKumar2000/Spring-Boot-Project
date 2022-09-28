@@ -1,26 +1,49 @@
 package com.project1.PhysiqueFirstGym.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 public class TrainerData {
 
     @Id
-    @SequenceGenerator(name = "MY_ENTITY_SEQ", sequenceName = "MY_ENTITY_SEQ", allocationSize=1)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "MY_ENTITY_SEQ" )
+    @GeneratedValue
+    @Column(name = "TrainerId")
     private Long tid; //Trainer ID
+
+    @Column(name = "Name")
     private String tname;  //Trainer Name
+
+    @Column(name = "Gender")
     private String tgender;  //Trainer Gender
+
+    @Column(name = "Age")
     private String tage;    //Trainer Age
+
+    @Column(name = "Contact")
     private Long tcontact;    //Trainer Contact no
+
+    @Column(name = "Email")
     private String temail;    //Trainer email
+
+    @Column(name = "Address")
     private String taddress;   //Trainer Address
+    private String AvailableHrs;  //Timing hrs of trainer
+
+    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+    @Temporal(TemporalType.DATE)
+    private Date joinedDate;
+
+    //create user FK
 
     public TrainerData() {
     }
 
-    public TrainerData(Long tid, String tname, String tgender, String tage, Long tcontact, String temail, String taddress) {
+    public TrainerData(Long tid, String tname, String tgender, String tage, Long tcontact, String temail, String taddress, String AvailableHrs) {
         this.tid = tid;
         this.tname = tname;
         this.tgender = tgender;
@@ -28,6 +51,7 @@ public class TrainerData {
         this.tcontact = tcontact;
         this.temail = temail;
         this.taddress = taddress;
+        this.AvailableHrs = AvailableHrs;
     }
 
     public Long getTid() {
@@ -86,6 +110,14 @@ public class TrainerData {
         this.taddress = taddress;
     }
 
+    public String getAvailableHrs() {
+        return AvailableHrs;
+    }
+
+    public void setAvailableHrs(String availableHrs) {
+        AvailableHrs = availableHrs;
+    }
+
     @Override
     public String toString() {
         return "TrainerData{" +
@@ -96,6 +128,7 @@ public class TrainerData {
                 ", tcontact=" + tcontact +
                 ", temail='" + temail + '\'' +
                 ", taddress='" + taddress + '\'' +
+                ", AvailableHrs='" + AvailableHrs + '\'' +
                 '}';
     }
 }

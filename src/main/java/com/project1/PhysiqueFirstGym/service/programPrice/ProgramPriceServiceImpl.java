@@ -28,14 +28,21 @@ public class ProgramPriceServiceImpl implements ProgramPriceService{
     @Override
     public ProgramPrice updateProgramPrice(Long ppid, ProgramPrice programPrice) {
         ProgramPrice programPrice1=programPriceRepository.findById(ppid).get();
-        if(Objects.nonNull(programPrice.getMonthlyFees()) && !"".equals(programPrice.getMonthlyFees())){
-            programPrice1.setMonthlyFees(programPrice.getMonthlyFees());
+        if(Objects.nonNull(programPrice.getBronzeMemship()) && !"".equals(programPrice.getBronzeMemship())){
+            programPrice1.setBronzeMemship(programPrice.getBronzeMemship());
         }
-        if(Objects.nonNull(programPrice.getQuaterlyFees()) && !"".equals(programPrice.getQuaterlyFees())){
-            programPrice1.setQuaterlyFees(programPrice.getQuaterlyFees());
+        if(Objects.nonNull(programPrice.getSilverMemship()) && !"".equals(programPrice.getSilverMemship())){
+            programPrice1.setSilverMemship(programPrice.getSilverMemship());
         }
-        if(Objects.nonNull(programPrice.getYearlyFees()) && !"".equals(programPrice.getYearlyFees())){
-            programPrice1.setYearlyFees(programPrice.getYearlyFees());
+        if(Objects.nonNull(programPrice.getPlatinumMemship()) && !"".equals(programPrice.getPlatinumMemship())){
+            programPrice1.setPlatinumMemship(programPrice.getPlatinumMemship());
+        }
+        if(Objects.nonNull(programPrice.getGoldMemship()) && !"".equals(programPrice.getGoldMemship())) {
+            programPrice1.setGoldMemship(programPrice.getGoldMemship());
+        }
+
+        if(Objects.nonNull(programPrice.getDiamondMemship()) && !"".equals(programPrice.getDiamondMemship())) {
+            programPrice1.setDiamondMemship(programPrice.getDiamondMemship());
         }
         return programPriceRepository.save(programPrice1);
 

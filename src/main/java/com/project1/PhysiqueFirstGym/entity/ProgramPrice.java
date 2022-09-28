@@ -3,7 +3,6 @@ package com.project1.PhysiqueFirstGym.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.jpa.repository.Query;
 
 import javax.persistence.*;
 
@@ -13,19 +12,30 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class ProgramPrice {
     @Id
-    @SequenceGenerator(name="Program_price_sequence",sequenceName = "Program_price_sequence",allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO,generator = "Program_price_sequence")
-    @Column(name = "ppid")
-    private Long ppid;//Program Price ID
+    @GeneratedValue
+    @Column(name = "Program_PriceId")
+    private Long ppid;
 
-    @Column(name="monthlyFees")
-    private Long monthlyFees;
+    @Column(name = "Bronze_Membership")
+    private Long bronzeMemship;
 
-    @Column(name = "quaterlyFees")
-    private Long quaterlyFees;
+    @Column(name = "Silver_Membership")
+    private Long silverMemship;
 
-    @Column(name = "yearlyFees")
-    private Long yearlyFees;
+    @Column(name = "Gold_Membership")
+    private Long goldMemship;
+
+    @Column(name = "Platinum_Membership")
+    private Long platinumMemship;
+
+    @Column(name = "Diamond_Membership")
+    private Long diamondMemship;
+
+    //create program id FK
+
+    @OneToOne(mappedBy = "programPrice")
+    private program Program;
+
 
 
 }
