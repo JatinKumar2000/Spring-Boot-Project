@@ -21,8 +21,8 @@ public class ProgramPriceServiceImpl implements ProgramPriceService{
     }
 
     @Override
-    public void saveProgramPrice(ProgramPrice programPrice) {
-        programPriceRepository.save(programPrice);
+    public ProgramPrice saveProgramPrice(ProgramPrice programPrice) {
+        return programPriceRepository.save(programPrice);
     }
 
     @Override
@@ -46,7 +46,11 @@ public class ProgramPriceServiceImpl implements ProgramPriceService{
         }
         return programPriceRepository.save(programPrice1);
 
+    }
 
+    @Override
+    public void deleteProgramPrice(Long ppid) {
+        programPriceRepository.deleteById(ppid);
     }
 
 

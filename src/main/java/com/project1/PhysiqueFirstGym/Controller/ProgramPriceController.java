@@ -9,19 +9,20 @@ import java.util.List;
 
 @RestController
 public class ProgramPriceController {
+
     @Autowired
     private ProgramPriceService programPriceService;
 
-    @GetMapping("/programs/programPrice/get")
+    @GetMapping("/programs/price/get")
     public List<ProgramPrice> getProgramPrice(){
         return programPriceService.getProgramPrice();
     }
 
-
-    @PutMapping("programs/programPrice/update/{ppid}")
+    @PutMapping("/programs/price/update/{ppid}")
     public ProgramPrice updateProgramPrice(@PathVariable("ppid") Long ppid,@RequestBody ProgramPrice programPrice){
         return programPriceService.updateProgramPrice(ppid,programPrice);
     }
+
 
 
 }

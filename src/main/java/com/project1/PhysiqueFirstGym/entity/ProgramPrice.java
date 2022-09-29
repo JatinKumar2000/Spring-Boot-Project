@@ -33,9 +33,6 @@ public class ProgramPrice {
 
     //create program id FK
 
-    @OneToOne(mappedBy = "programPrice")
-    private program Program;
-
-
 
 }
+
