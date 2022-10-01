@@ -5,43 +5,48 @@ import com.project1.PhysiqueFirstGym.service.user.UserDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 public class UserDataController {
+
     @Autowired
     private UserDataService userService;
-
-    @PostMapping("/user/saveUser")
-    public String saveUserData(@Valid @RequestBody UserData uData){
+    @PostMapping("/client/save")
+    public String saveUserData(@RequestBody UserData uData){
         userService.saveUserData(uData);
-        return "Saved User Data Successfully";
+        return "User Data Saved Successfully";
     }
 
-    @GetMapping("/user/getUserData")
+    @GetMapping("/client/get")
     public List<UserData> getUserData(){
         return userService.getUserData();
     }
 
-    @GetMapping("/user/getUserData/id/{id}")
+    @GetMapping("/client/get/id/{id}")
     public UserData getUserDataById(@PathVariable("id") Long userId){
         return userService.getUserDataById(userId);
     }
 
-    @DeleteMapping("/user/deleteUserData/{id}")
+    @DeleteMapping("/client/delete/{id}")
     public String deleteUserDataById(@PathVariable("id") Long userId){
         userService.deleteUserDataById(userId);
         return "User Deleted Successfully";
     }
 
-    @PutMapping("/user/updateUserData/{id}")
+    @PutMapping("/client/update/{id}")
     public UserData updateUserDataById(@PathVariable("id") Long userId, @RequestBody UserData uData){
         return userService.updateUserDataById(userId,uData);
     }
 
-    @GetMapping("user/getUserData/name/{name}")
+    @GetMapping("user/get/name/{name}")
     public UserData getUserDataByName(@PathVariable("name") String name){
         return userService.getUserDataByName(name);
+    }
+
+
+    @GetMapping("/example")
+    public UserData example(){
+        return userService.example();
     }
 }

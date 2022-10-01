@@ -6,16 +6,20 @@ import java.util.List;
 
 public interface UserDataService{
 
-   public UserData saveUserData(UserData uData);
 
-   public List<UserData> getUserData();
+  public void saveUserData(UserData uData);
 
-   public UserData getUserDataById(Long userId);
+  public List<UserData> getUserData();
 
-   public void deleteUserDataById(Long userId);
+  public UserData getUserDataById(Long userId);
 
-   public UserData updateUserDataById(Long userId, UserData uData);
+  public void deleteUserDataById(Long userId);
+
+  public UserData updateUserDataById(Long userId, UserData uData);
 
 
-   public UserData getUserDataByName(String name);
+  public UserData getUserDataByName(String name);
+
+
+  public UserData example();
 }

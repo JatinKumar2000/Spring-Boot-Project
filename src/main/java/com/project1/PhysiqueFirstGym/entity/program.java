@@ -10,8 +10,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class program {
     @Id
-    @GeneratedValue
     @Column(name = "ProgramId")
+    @GeneratedValue
     private Long pid;
     @Column(name = "Program_name")
     private String pname;

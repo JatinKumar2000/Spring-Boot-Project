@@ -11,8 +11,8 @@ import java.util.List;
 public class TrainerData {
 
     @Id
-    @GeneratedValue
     @Column(name = "TrainerId")
+    @GeneratedValue
     private Long tid; //Trainer ID
 
     @Column(name = "Name")

@@ -12,8 +12,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class ProgramPrice {
     @Id
-    @GeneratedValue
     @Column(name = "Program_PriceId")
+    @GeneratedValue
     private Long ppid;
 
     @Column(name = "Bronze_Membership")

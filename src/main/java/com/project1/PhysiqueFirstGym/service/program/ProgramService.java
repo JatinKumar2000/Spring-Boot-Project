@@ -7,7 +7,7 @@ import java.util.List;
 public interface ProgramService {
    public List<program> getPrograms();
 
-   public program saveProgram(program program);
+   public program saveProgram(program Program);
 
     public void deleteProgram(Long pid);
 

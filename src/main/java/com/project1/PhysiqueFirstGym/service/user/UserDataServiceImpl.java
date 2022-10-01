@@ -2,7 +2,6 @@ package com.project1.PhysiqueFirstGym.service.user;
 
 import com.project1.PhysiqueFirstGym.entity.UserData;
 import com.project1.PhysiqueFirstGym.repository.UserDataRepository;
-import com.project1.PhysiqueFirstGym.service.user.UserDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,29 +12,32 @@ import java.util.Objects;
 public class UserDataServiceImpl implements UserDataService {
 
     @Autowired
-    private UserDataRepository userRepo;
+    private UserDataRepository userDataRepository;
+
     @Override
-    public UserData saveUserData(UserData uData) {
-        return userRepo.save(uData);
+    public void saveUserData(UserData uData) {
+        userDataRepository.save(uData);
     }
+
     @Override
     public List<UserData> getUserData() {
-        return userRepo.findAll();
+        return userDataRepository.findAll();
     }
 
     @Override
     public UserData getUserDataById(Long userId) {
-        return userRepo.findById(userId).get();
+        return userDataRepository.findById(userId).get();
     }
 
     @Override
     public void deleteUserDataById(Long userId) {
-        userRepo.deleteById(userId);
+        userDataRepository.deleteById(userId);
     }
 
     @Override
     public UserData updateUserDataById(Long userId, UserData uData) {
-        UserData Udata=userRepo.findById(userId).get();
+
+        UserData Udata=userDataRepository.findById(userId).get();
         if(Objects.nonNull(uData.getName()) && !"".equalsIgnoreCase(uData.getName())){
             Udata.setName(uData.getName());
         }
@@ -50,13 +52,16 @@ public class UserDataServiceImpl implements UserDataService {
             Udata.setContact(uData.getContact());
         }
 
-        return userRepo.save(Udata);
+        return userDataRepository.save(Udata);
     }
 
     @Override
     public UserData getUserDataByName(String name) {
-        return userRepo.findByNameIgnoreCase(name);
+        return userDataRepository.findByNameIgnoreCase(name);
     }
 
-
+    @Override
+    public UserData example() {
+        return  userDataRepository.gymExample();
+    }
 }
