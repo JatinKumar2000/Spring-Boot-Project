@@ -45,8 +45,4 @@ public class UserDataController {
     }
 
 
-    @GetMapping("/example")
-    public UserData example(){
-        return userService.example();
-    }
 }

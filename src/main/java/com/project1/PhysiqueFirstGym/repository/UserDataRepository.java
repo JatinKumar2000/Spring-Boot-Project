@@ -10,6 +10,5 @@ import java.util.List;
 public interface UserDataRepository extends JpaRepository<UserData,Long> {
     public UserData findByNameIgnoreCase(String name);
 
-    @Query(value = "select * from user_data u union select * from TrainerData",nativeQuery = true)
-    public UserData gymExample();
+
 }

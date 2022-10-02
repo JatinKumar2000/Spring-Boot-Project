@@ -23,4 +23,6 @@ public class program {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="Program_priceId")
     private ProgramPrice programPrice;
+
+
 }

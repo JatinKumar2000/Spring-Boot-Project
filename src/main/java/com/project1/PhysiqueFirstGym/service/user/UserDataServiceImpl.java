@@ -17,6 +17,7 @@ public class UserDataServiceImpl implements UserDataService {
     @Override
     public void saveUserData(UserData uData) {
         userDataRepository.save(uData);
+
     }
 
     @Override
@@ -60,8 +61,5 @@ public class UserDataServiceImpl implements UserDataService {
         return userDataRepository.findByNameIgnoreCase(name);
     }
 
-    @Override
-    public UserData example() {
-        return  userDataRepository.gymExample();
-    }
+
 }

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -34,10 +35,13 @@ public class UserData {
     @Column(name = "Membership_End_Date")
     private Date membEnddate;   //User Membership end date
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "Membership_Id")
     private Membership membership;
 
+    @OneToMany(cascade = {CascadeType.PERSIST})
+    @JoinColumn(name="User_Id",referencedColumnName = "UserId")
+    private List<Transaction> transaction;
 
 
 }

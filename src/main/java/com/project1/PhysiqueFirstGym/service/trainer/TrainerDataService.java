@@ -10,4 +10,6 @@ public interface TrainerDataService{
     public void deleteTrainerDataById(Long tid);
 
     public TrainerData saveTrainerData(TrainerData tdata);
+
+    public TrainerData updateTrainerData(Long id, TrainerData trainerData);
 }

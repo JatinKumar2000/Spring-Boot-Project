@@ -21,5 +21,4 @@ public interface UserDataService{
   public UserData getUserDataByName(String name);
 
 
-  public UserData example();
 }

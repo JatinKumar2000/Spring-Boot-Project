@@ -27,4 +27,10 @@ public class TrainerController {
         trainerDataService.deleteTrainerDataById(tid);
         return "Deleted Trainer Data Successfully";
     }
+
+
+    @PutMapping("/trainer/update/{id}")
+    public TrainerData updateTrainerData(@PathVariable("id") Long id,@RequestBody TrainerData trainerData){
+        return trainerDataService.updateTrainerData(id,trainerData);
+    }
 }
