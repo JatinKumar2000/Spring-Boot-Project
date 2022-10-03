@@ -21,6 +21,9 @@ public class Membership {
     private String discount;
 
     //create user FK
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "Membership_Id",referencedColumnName = "mid")
+    private List<UserData> userData;
 
 
 

@@ -1,9 +1,7 @@
 package com.project1.PhysiqueFirstGym.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -35,9 +33,12 @@ public class UserData {
     @Column(name = "Membership_End_Date")
     private Date membEnddate;   //User Membership end date
 
-    @ManyToOne(cascade = {CascadeType.PERSIST})
-    @JoinColumn(name = "Membership_Id")
-    private Membership membership;
+    //private Long Membership_Id;
+
+
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "Membership_Id",referencedColumnName = "mid")
+    private Membership member_ship;
 
     @OneToMany(cascade = {CascadeType.PERSIST})
     @JoinColumn(name="User_Id",referencedColumnName = "UserId")
