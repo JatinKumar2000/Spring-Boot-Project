@@ -8,4 +8,8 @@ public interface MembershipService {
     public List<Membership> getMembership();
 
     public Membership updateMembership(Long mid, Membership membership);
+
+    public void deleteMembership(Long id);
+
+    public Membership saveMembership(Membership membership);
 }

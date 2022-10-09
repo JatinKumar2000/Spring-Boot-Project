@@ -1,11 +1,14 @@
 package com.project1.PhysiqueFirstGym.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.*;
+
 import javax.persistence.*;
+import java.util.Set;
+
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class program {
@@ -24,5 +27,7 @@ public class program {
     @JoinColumn(name="Program_priceId")
     private ProgramPrice programPrice;
 
-
+    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST},mappedBy = "programs")
+    @JsonBackReference
+    private Set<UserData> usersData;
 }

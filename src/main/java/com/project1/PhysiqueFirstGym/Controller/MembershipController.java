@@ -22,4 +22,17 @@ public class MembershipController {
     public Membership updateMembership(@PathVariable("id") Long mid,@RequestBody Membership membership){
         return membershipService.updateMembership(mid,membership);
     }
+
+    @DeleteMapping("/membership/delete/{id}")
+    public String deleteMembership(@PathVariable("id") Long id){
+        membershipService.deleteMembership(id);
+        return "Membership Deleted Successfully";
+    }
+
+
+    @PostMapping("/membership/save")
+    public Membership saveMembership(@RequestBody Membership membership){
+        return membershipService.saveMembership(membership);
+
+    }
 }

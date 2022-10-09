@@ -35,5 +35,10 @@ public class TransactionServiceImpl implements TransactionService{
         return transactionRepo.save(newTransaction);
     }
 
+    @Override
+    public Transaction saveTransaction(Transaction transaction) {
+        return transactionRepo.save(transaction);
+    }
+
 
 }

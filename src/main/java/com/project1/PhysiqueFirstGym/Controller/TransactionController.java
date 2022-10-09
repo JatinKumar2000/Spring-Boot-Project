@@ -13,19 +13,24 @@ public class TransactionController {
     @Autowired
     private TransactionService transactionService;
 
-    @GetMapping("transactions/get")
+    @GetMapping("/transactions/get")
     public List<Transaction> getTransaction(){
         return transactionService.getTransaction();
     }
 
-    @DeleteMapping("transaction/delete/{id}")
+    @DeleteMapping("/transaction/delete/{id}")
     public String deleteTransaction(@PathVariable("id") Long id){
         transactionService.deleteTransaction(id);
         return "Transaction Deleted Successfully";
     }
 
-    @PutMapping("transaction/update/{id}")
+    @PutMapping("/transaction/update/{id}")
     public Transaction updateTransaction(@PathVariable("id") Long id,@RequestBody Transaction transaction){
         return transactionService.updateTransaction(id,transaction);
+    }
+
+    @PostMapping("/transaction/save")
+    public Transaction saveTransaction(@RequestBody Transaction transaction){
+        return transactionService.saveTransaction(transaction);
     }
 }

@@ -34,4 +34,14 @@ public class MembershipServiceImpl implements MembershipService{
 
         return membershipRepo.save(newMembership);
     }
+
+    @Override
+    public void deleteMembership(Long id) {
+        membershipRepo.deleteById(id);
+    }
+
+    @Override
+    public Membership saveMembership(Membership membership) {
+        return membershipRepo.save(membership);
+    }
 }
