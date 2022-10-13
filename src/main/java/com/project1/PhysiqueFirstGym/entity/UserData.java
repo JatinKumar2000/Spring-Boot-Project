@@ -10,6 +10,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -55,15 +56,13 @@ public class UserData {
     private TrainerData trainerData;
     private Long trainerid;
 
-    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.ALL})
-    @JoinTable(name = "user_program_table",joinColumns = @JoinColumn(name = "Client_Id"),
-            inverseJoinColumns = @JoinColumn(name = "programid",updatable = false,insertable = false))
-
-    private Set<program> programs;
-    private Long programid;
+    @ManyToMany
+    @JoinTable(name = "user_program_table",joinColumns = @JoinColumn(name = "User_Id"),
+            inverseJoinColumns = @JoinColumn(name = "Program_Id"))
+    private Set<program> programs=new HashSet<>();
 
 
-
-
-
+    public void enrollProgram(program program) {
+        programs.add(program);
+    }
 }

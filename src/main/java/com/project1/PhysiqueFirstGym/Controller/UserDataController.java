@@ -39,9 +39,15 @@ public class UserDataController {
         return userService.updateUserDataById(userId,uData);
     }
 
-    @GetMapping("user/get/name/{name}")
+    @GetMapping("client/get/name/{name}")
     public UserData getUserDataByName(@PathVariable("name") String name){
         return userService.getUserDataByName(name);
+    }
+
+
+    @PutMapping("client/updateProgram/{id}/program/{pid}")
+    public UserData updateProgramstoUser(@PathVariable("id") Long id,@PathVariable("pid") Long pid){
+        return userService.updateProgramstoUser(id,pid);
     }
 
 

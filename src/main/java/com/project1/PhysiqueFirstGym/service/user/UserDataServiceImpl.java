@@ -1,6 +1,8 @@
 package com.project1.PhysiqueFirstGym.service.user;
 
 import com.project1.PhysiqueFirstGym.entity.UserData;
+import com.project1.PhysiqueFirstGym.entity.program;
+import com.project1.PhysiqueFirstGym.repository.ProgramRepository;
 import com.project1.PhysiqueFirstGym.repository.UserDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,9 @@ public class UserDataServiceImpl implements UserDataService {
 
     @Autowired
     private UserDataRepository userDataRepository;
+
+    @Autowired
+    private ProgramRepository programRepository;
 
     @Override
     public void saveUserData(UserData uData) {
@@ -59,6 +64,14 @@ public class UserDataServiceImpl implements UserDataService {
     @Override
     public UserData getUserDataByName(String name) {
         return userDataRepository.findByNameIgnoreCase(name);
+    }
+
+    @Override
+    public UserData updateProgramstoUser(Long id, Long pid) {
+        UserData userData=userDataRepository.findById(id).get();
+        program Program=programRepository.findById(pid).get();
+        userData.enrollProgram(Program);
+        return userDataRepository.save(userData);
     }
 
 
