@@ -13,9 +13,14 @@ public class Transaction {
     private Long tran_Id;
     private Long amount;
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy",locale = "en-IN",timezone = "Asia/Kolkata")
     @Temporal(TemporalType.DATE)
     private Date date;
+
+    @PrePersist
+    private void setDate(){
+        date=new Date();
+    }
 
     @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name="userid",insertable = false,updatable = false)

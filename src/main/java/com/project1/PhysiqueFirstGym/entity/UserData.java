@@ -32,9 +32,14 @@ public class UserData {
     private String email;
     private Long contact;
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy",locale = "en-IN",timezone = "Asia/Kolkata")
     @Temporal(TemporalType.DATE)
     private Date joinDate;
+
+    @PrePersist
+    private void setJoinDate(){
+        joinDate=new Date();
+    }
 
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
     @Temporal(TemporalType.DATE)

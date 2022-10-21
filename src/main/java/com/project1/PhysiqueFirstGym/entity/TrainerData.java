@@ -30,9 +30,14 @@ public class TrainerData {
     private String taddress;   //Trainer Address
     private String AvailableHrs;  //Timing hrs of trainer
 
-    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="dd-MM-yyyy",locale = "en-IN",timezone = "Asia/Kolkata")
     @Temporal(TemporalType.DATE)
     private Date joinedDate;
+
+    @PrePersist
+    private void setJoinedDate(){
+        joinedDate=new Date();
+    }
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "trainerData")
     @JsonBackReference
